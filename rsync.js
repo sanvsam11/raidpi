@@ -37,7 +37,7 @@ var rsync_trigger = ()=>{
 }
 var callRsync = async ()=>{
     console.log("check data access")
-    await checkData('/media/pi/data')
+    await checkData('/media/pi/data/')
     console.log('starting rsync')
     let output = await rsync_trigger()
     console.log(output)
@@ -45,10 +45,12 @@ var callRsync = async ()=>{
 }
 function checkData(path, timeout=2000){
     const intervalObj = setInterval(function(){
-        const dataAvailable = false
+        const dataInactive = true
         return new Promise((resolve, reject)=>{
             try{
-                dataInactive = fs.readdirSync(path).length === 0
+                const dataObj = fs.readdirSync(path)
+                if(dataObj)
+                    dataInactive = dataObj.length === 0
             }
             catch(error){
                 console.log("Data missing. Invoking WOL.")

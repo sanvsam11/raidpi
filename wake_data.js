@@ -1,5 +1,5 @@
 var wol = require('node-wol')
-require('305').config()
+require('dotenv').config()
 
 var wake_data = ()=>{
     console.log("Initiating Wake")
