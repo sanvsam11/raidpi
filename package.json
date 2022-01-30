@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^14.3.2",
     "node-watch": "^0.7.3",
     "node-wol": "^0.1.1",
     "rsync": "^0.6.1"
